@@ -15,9 +15,11 @@ logsource:
     product: windows
     category: process_creation
 detection:
-    CommandLine|contains|all:
-        - curl
-        - ftp://
+    selection:
+        CommandLine|contains|all:
+            - curl
+            - ftp://
+    condition: selection
 falsepositives:
     - Unlikely, any match should be investigated to rule out malicious file transfers since FTP is not allowed in most security conscious organizations
 level: high
